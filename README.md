@@ -3,14 +3,14 @@
 **AIGCN-RUL** (Aging-Informed Graph Convolutional Network for Remaining Useful Life Estimation) is a unified framework that formulates RUL prediction as an **aging-aware graph learning** problem. The method integrates degradation priors with dynamic inter-sensor dependencies using temporal embeddings and graph neural networks.
 
 <p align="center">
-  <img src="./pics/architecture.png" height="350" alt="AIGCN-RUL Architecture" />
+  <img src=".\pics\architecture.png" height="350" alt="AIGCN-RUL Architecture" />
 </p>
 
 ---
 
 ## Results
 
-AIGCN-RUL is evaluated against 9 state-of-the-art baselines, including Dual-Mixer, DA-Transformer, FCSTGNN, and others.
+AIGCN-RUL is evaluated against 9 state-of-the-art baselines, including Dual-Mixer-RUL, DA-Transformer-RUL, FCSTGNN-RUL, and others.
 Our method consistently outperforms all baselines on both C-MAPSS and N-CMAPSS datasets in terms of RMSE and Score.
 
 CMAPSS result:
