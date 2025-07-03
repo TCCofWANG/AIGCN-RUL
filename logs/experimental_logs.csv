@@ -1,0 +1,2 @@
+dataset,model,time,inference_time,ablation_mode,LR,batch_size,best_last_RMSE,best_overall_RMSE,score,windowsize,d_model,dropout,kernal_size/b_dim,kernal_stride,train,savepath,resume,resumepath,info
+FD003,AIGCN,20250703-150800,0.011002302,mean,0.005,128,9.991432669,9.991432669,187.8542682,60,64,0.1,3,1,TRUE,./logs/FD003/AIGCN/exp0,FALSE,,main test
