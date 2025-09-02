@@ -26,7 +26,7 @@ N-CMAPSS result:
 
 The data can be downloaded here.
 
-NASA CMAPSS Jet Engine Simulated Data can be download from [here](https://catalog.data.gov/dataset/cmapss-jet-engine-simulated-data), and NASA N-CMAPSS Jet Engine Simulated Data can be download from [here](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/).
+NASA CMAPSS Jet Engine Simulated Data can be download from [here](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/), and NASA N-CMAPSS Jet Engine Simulated Data can be download from [here](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/).
 In case the link does not work, please use this [shared drive](https://drive.google.com/drive/folders/1HtnDBGhMoAe53hl3t1XeCO9Z8IKd3-Q-).
 
 Place the dataset folder inside the project root (or update the data path in your script accordingly).

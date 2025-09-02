@@ -17,8 +17,6 @@ from N_CMAPSS_Related.N_CMAPSS_load_data import get_n_cmapss_data_, N_CMAPSSData
 from CMAPSS_Related.load_data_CMAPSS import get_cmapss_data_
 from CMAPSS_Related.CMAPSS_Dataset import CMAPSSData
 
-from XJTU_Related.load_data_XJTU import get_xjtu_data_
-from XJTU_Related.XJTU_Dataset import XJTUData
 from torch.utils.data import DataLoader
 
 from Model import *

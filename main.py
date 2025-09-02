@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
+import time
+
 os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 # %%
 import warnings
@@ -7,7 +9,6 @@ import warnings
 warnings.filterwarnings("ignore")
 # %%
 from Experiment.Experiment import Exp
-from Experiment.Experiment_DA import Exp_DA
 import torch
 
 
@@ -62,12 +63,12 @@ if __name__ == '__main__':
 
     parser.add_argument('--model_name', default='AIGCN', type=str,
                         help='[LeNet, LSTM, Transformer,Autoformer, PatchTST, AGCNN, Dual_Mixer, IMDSSN '
-                             'Transformer_domain,FCSTGNN, AIGCN]')
+                             'Transformer_domain,FCSTGNN, AIGCN, AIGCN_AS]')
 
-    parser.add_argument('--train', default=True, type=str2bool,
+    parser.add_argument('--train', default=False, type=str2bool,
                         help='Train or test')
 
-    parser.add_argument('--resume', default=False, type=str2bool,
+    parser.add_argument('--resume', default=True, type=str2bool,
                         help='load checkpoint or not')
 
     parser.add_argument('--save_test', default=True, type=str2bool,
@@ -76,13 +77,13 @@ if __name__ == '__main__':
     parser.add_argument('--save_path', default='exp0',
                         help='If path is None, exp_id add 1 automatically:if train, it wiil be useful')
 
-    parser.add_argument('--resume_path', default='exp67',
+    parser.add_argument('--resume_path', default='exp0',
                         help='if resume is True, it will be useful')
 
     parser.add_argument('--train_epochs', default=300, type=int,
                         help='train_epochs')
 
-    parser.add_argument('--learning_rate', default=0.005, type=float,
+    parser.add_argument('--learning_rate', default=0.001, type=float,
                         help='lr')
 
     parser.add_argument('--info', default='main test', type=str,
@@ -90,15 +91,15 @@ if __name__ == '__main__':
 
     # 1. load data parameter - common
     parser.add_argument('--dataset_name', default='CMAPSS', type=str,
-                        help='[CMAPSS,N_CMAPSS,XJTU]')
+                        help='[CMAPSS,N_CMAPSS]')
 
-    parser.add_argument('--Data_id_CMAPSS', default="FD003", type=str,
+    parser.add_argument('--Data_id_CMAPSS', default="FD001", type=str,
                         help='for CMAPSS')
 
     parser.add_argument('--Data_id_N_CMAPSS', default="", type=str,
                         help='for N_CMAPSS')
 
-    parser.add_argument('--input_length', default=60, type=int,
+    parser.add_argument('--input_length', default=50, type=int,
                         help='input_lenth')
 
     parser.add_argument('--validation', default=0.1, type=float,
@@ -108,7 +109,7 @@ if __name__ == '__main__':
                         help='bs')
     # AATE
     # parser.add_argument('--tuned_hyperparam', default=True, type=bool, help='if true it will use tune the hyperparameters datasetspecfic')
-    parser.add_argument('--ablation_mode', default='mean', type=str, help='[identity, fixed, zero, CDI, staticAdj]')
+    parser.add_argument('--ablation_mode', default='linear', type=str, help='[linear, exponential, weiner_process, gamma_process, mean, pe]')
     parser.add_argument('--AATE_dim', default = 10, type=int, help='AATE dimension')
     parser.add_argument( '--seed', type=int, default=1, help="Random seed" )
 
@@ -151,9 +152,9 @@ if __name__ == '__main__':
                         help='stride for Dlinear')
 
     # diff prediction but it is not correct ,so set it False
-    parser.add_argument('--is_diff', default=False, type=str2bool,help='是否进行差分')
+    parser.add_argument('--is_diff', default=False, type=str2bool)
 
-    parser.add_argument('--is_minmax', default=True, type=str2bool,help='是否进行最大最小标准化')
+    parser.add_argument('--is_minmax', default=True, type=str2bool)
 
     # cross_seg
     parser.add_argument('--n_seg', type=int, default=8, help='seg for cross attention ')
@@ -167,7 +168,7 @@ if __name__ == '__main__':
     parser.add_argument('--factor', type=int, default=3, help='attn factor')
     parser.add_argument('--e_layers', type=int, default=1, help='num of encoder layers')
     parser.add_argument('--d_layers', type=int, default=1, help='num of decoder layers')
-    parser.add_argument('--activation', type=str, default='gelu', help='activation')
+    parser.add_argument('--activation', type=str, default='relu', help='activation')
 
     # patchTST
     parser.add_argument('--patch_len', type=int, default=8, help='patch length')
@@ -244,5 +245,3 @@ if __name__ == '__main__':
     else:
         exp = Exp(args)
         exp.start()
-
-

@@ -5,8 +5,8 @@ DA: false
 Data_id_CMAPSS: FD003
 Data_id_N_CMAPSS: ''
 MAXLIFE_CMAPSS: 125
-ablation_mode: mean
-activation: gelu
+ablation_mode: linear
+activation: relu
 change_len: true
 d_ff: 128
 d_layers: 1
@@ -29,7 +29,7 @@ gpu: 0
 hidden_dim: 64
 hop: 1
 info: main test
-input_length: 60
+input_length: 50
 is_diff: false
 is_minmax: true
 kernal_size: 10
@@ -57,7 +57,7 @@ s: 1
 sampling: 10
 save_test: true
 seed: 1
-sequence_len: 60
+sequence_len: 50
 smooth_loss: null
 source_domain: FD001
 stride: 1

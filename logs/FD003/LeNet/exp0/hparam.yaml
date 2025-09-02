@@ -1,12 +1,12 @@
+AATE_dim: 10
 Classify: false
 D1_lr: 0.0001
 DA: false
 Data_id_CMAPSS: FD003
 Data_id_N_CMAPSS: ''
 MAXLIFE_CMAPSS: 125
-ablation_mode: mean
-activation: gelu
-basis_dim: 10
+ablation_mode: linear
+activation: relu
 change_len: true
 d_ff: 128
 d_layers: 1
